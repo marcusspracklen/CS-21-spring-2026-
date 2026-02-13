@@ -14,7 +14,7 @@ public:
 
 	void enqueue(const std::string& value);
 	std::string dequeue();
-	bool isQueueEmpty() const;
+	bool isEmpty() const;
 };
 
 #endif

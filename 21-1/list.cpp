@@ -1,7 +1,7 @@
 #include "list.h"
 #include <stdexcept>
 
-List::List() : head(nullptr), tail(nullptr) {}
+List::List() : head(nullptr), tail(nullptr), size(0) {}
 
 List::~List() {
 	while (!isEmpty()) {
@@ -19,6 +19,7 @@ void List::insertFront(const std::string& value) {
 		head->prev = newNode;
 		head = newNode;
 	}
+	size++;
 }
 
 void List::insertBack(const std::string& value) {

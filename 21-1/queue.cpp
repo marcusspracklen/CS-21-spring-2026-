@@ -12,6 +12,6 @@ std::string Queue::dequeue() {
 	return list.removeFront();
 }
 
-bool Queue::isQueueEmpty() const {
+bool Queue::isEmpty() const {
 	return list.isEmpty();
 }
