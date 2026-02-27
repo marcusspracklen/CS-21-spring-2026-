@@ -1,24 +1,30 @@
-#include "queue.h"
 #include <iostream>
-#include <string>
+#include "intMinHeap.h"
 
 int main() {
-	Queue queue;
-	std::string line;
+	intMinHeap heap(2400000);
 
-	// Read all input lines until EOF
-	while(std::getline(std::cin, line)) {
-		queue.enqueue(line);
-	}
+	int val;
+	while (std::cin >> val) {
+		if (val > 0) {
+			heap.heapinsert(val);
+			std::cout << "insert: " << val << "\n";
+		} else if (val == 0) {
+			std::cout << "heap size " << heap.sizeOfHeap() << ": " << heap.toString() << "\n";
 
-	// Dequeue and print every other line
-	bool print = true;
-	while(!queue.isEmpty()) {
-		std::string line = queue.dequeue();
-		if (print) {
-			std::cout << line << std::endl;
+		} else if (val == -1) {
+			std::cout << "extract min: " << heap.extractmin() << "\n";
+
+		} else if (val == -2) {
+			auto [arr, sz] = heap.heapsort();
+			std::cout << "sorted array: [";
+			for (int i = 0; i < sz; i++) {
+				std::cout << arr[i];
+				if (i < sz -1) std::cout << ", ";
+			}	
+			std::cout << "]" << "\n";
+			delete[] arr;
 		}
-		print = !print;
 	}
 
 	return 0;
