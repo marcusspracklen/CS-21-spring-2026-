@@ -40,19 +40,18 @@ void intMinHeap::heapify(int i) {
 }
 
 void intMinHeap::buildheap() {
-	for (int i = size / 2 - 1; i > 0; i--) {
+	for (int i = size / 2 - 1; i >= 0; i--) {
 		heapify(i);
 	}
 }
 
 // Public functions
-
 bool intMinHeap::heapinsert(int val) {
 	if (isFull()) return false;
 
-	A[size] = val - 1;
-	decreasekey(size, val);
+	A[size] = val + 1;
 	size++;
+	decreasekey(size - 1, val);
 	return true;
 }
 
@@ -72,13 +71,10 @@ int intMinHeap::extractmin() {
 
 void intMinHeap::decreasekey(int i, int k) {
 	if (i < 0 || i >= size) return;
-	if (k < A[i]) return; 
+	if (k > A[i]) return; 
 	A[i] = k;
 
-	if (A[i] <= k) return;
-
-	A[i] = k;
-	while (i < 0 && A[parent(i)] > A[i]) {
+	while (i > 0 && A[parent(i)] > A[i]) {
 		std::swap(A[i], A[parent(i)]);
 		i = parent(i);
 	}
@@ -96,6 +92,11 @@ std::pair<int*, int> intMinHeap::heapsort() {
 		std::swap(A[0], A[i]);
 		size--;
 		heapify(0);
+	}
+
+	// copy resultant array
+	for (int i = 0; i < n; i++) {
+		result[i] = A[i];
 	}
 
 	// restore heap

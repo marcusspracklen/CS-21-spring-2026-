@@ -1,21 +1,25 @@
-CXX = g++
-CXXFLAGS = -std=c++11 -Wall
-TARGET = p1
-OBJS = main.o list.o queue.o
+CXX	 = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -g
 
-$(TARGET) : $(OBJS) 
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-	
-main.o: main.cpp queue.h list.h
-	$(CXX) $(CXXFLAGS) -c main.cpp
+TARGET	 = p2
+SRCS	 = main.cpp intMinHeap.cpp
+OBJS	 = $(SRCS:.cpp=.o)
 
-list.o: list.cpp list.h
-	$(CXX) $(CXXFLAGS) -c list.cpp
+all: $(TARGET)
 
-queue.o: queue.cpp queue.h list.h
-	$(CXX) $(CXXFLAGS) -c queue.cpp
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+main.o: main.cpp intMinHeap.h
+	$(CXX) $(CXXFLAGS) -c $<
+
+intMinHeap.o: intMinHeap.cpp intMinHeap.h
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
 	rm -f $(OBJS) $(TARGET)
 
-.PHONY: clean
+run: $(TARGET)
+	./$(TARGET)
+
+.PHONY: all clean run
