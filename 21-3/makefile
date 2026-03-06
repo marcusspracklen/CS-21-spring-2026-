@@ -4,7 +4,7 @@ TARGET   = p3
 SRCS	 = main.cpp quickSort.cpp
 OBJS     = $(SRCS:.cpp=.o)
 
-.PHONY: all clear
+.PHONY: all clean
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^

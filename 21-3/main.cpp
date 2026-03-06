@@ -15,18 +15,16 @@ int main(int argc, char* argv[]) {
 	}
 
 	std::vector<int> numbers;
-	std::vector<std::string> raw;
 
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		if (line.empty()) continue;
 
-		if (!line.empty() && line.back() == 'r') {
+		if (!line.empty() && line.back() == '\r') {
 			line.pop_back();
 		}
 		if(line.empty()) continue;
 
-		raw.push_back(line);
 		numbers.push_back(std::stoi(line));
 	}
 

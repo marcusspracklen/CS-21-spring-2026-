@@ -6,7 +6,7 @@
 
 const int M03_THRESHOLD = 25;
 
-int meadianOfThree(std::vector<int>& vec, int a, int b, int c);
+int medianOfThree(std::vector<int>& vec, int a, int b, int c);
 
 // Lomuto Partition
 

@@ -27,8 +27,8 @@ int lomutoPartition(std::vector<int>& vec, int low, int high) {
 
 	for (int j = low; j < high; j++) {
 		if (vec[j] <= x) {
-			std::swap(vec[i], vec[j]);
 			i++;
+			std::swap(vec[i], vec[j]);
 		}
 	}
 	std::swap(vec[i + 1], vec[high]);
@@ -38,8 +38,8 @@ int lomutoPartition(std::vector<int>& vec, int low, int high) {
 void quickSortLomuto(std::vector<int>& vec, int low, int high) {
 	if (low < high) {
 		int q = lomutoPartition(vec, low, high);
-		quickSortLomuto(vec, low, q-1);
-		quickSortLomuto(vec, q+1, high);	
+		quickSortLomuto(vec, low, q - 1);
+		quickSortLomuto(vec, q + 1, high);	
 	}
 }
 
