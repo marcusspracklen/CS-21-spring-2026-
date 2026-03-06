@@ -31,7 +31,7 @@ int lomutoPartition(std::vector<int>& vec, int low, int high) {
 			i++;
 		}
 	}
-	std::swap(vec[i], vec[high]);
+	std::swap(vec[i + 1], vec[high]);
 	return i + 1;
 }
 
