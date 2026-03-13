@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 
-void bucketSort(std::vector<std::string> numbers) {
+void bucketSort(std::vector<std::string>& numbers) {
 	std::vector<std::string> buckets[10];
 
 	// 9 passes, starting from least significant
@@ -18,7 +18,6 @@ void bucketSort(std::vector<std::string> numbers) {
                 for (int i = 0; i < 10; i++) {
                         buckets[i].clear();
                 }
-
 
 
                 // Distribute into buckets based on digit at current pos
@@ -31,18 +30,17 @@ void bucketSort(std::vector<std::string> numbers) {
                 // Collect back into numbers array
                 int index = 0;
                 for (int j = 0; j < 10; j++) {
-                        for (const std::string & s : buckets[j]) {
+                        for (const std::string& s : buckets[j]) {
                                 numbers[index++] = s;
                         }
                 }
         }
 
-        // Output sorted numbers
+       	// Output sorted numbers
         for (const std::string& s : numbers) {
                 std::cout << s << "\n";
         }
-
-}  
+}
 
 
 int main() {
@@ -63,4 +61,3 @@ int main() {
 	return 0;
 
 }
-

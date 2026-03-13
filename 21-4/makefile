@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -std=c++17
+CXXFLAGS = -O2 -march=native -Wall -std=c++17
 
 all: p4
 
