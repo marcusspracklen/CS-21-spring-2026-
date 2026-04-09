@@ -105,6 +105,7 @@ int main() {
 				std::cout << "ERROR: cannot open \"" << filename << "\" for writing.\n";
 			} else {
 				ht.save();
+				fout << ht.toString();
 				std::cout << "Saved " << ht.size() << " record(s) to \"" << filename << "\"\n";
 			}
 		// 7: Quit

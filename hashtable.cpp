@@ -51,12 +51,15 @@ void HashTable::clear() {
 	size_ = 0;
 }
 
+<<<<<<< HEAD
 void HashTable::save() const {
 	for (const auto& chain : table_)
 		for (const auto& rec : chain)
 			std::cout << rec->getLine() << '\n';
 }
 
+=======
+>>>>>>> 007a566 (working version with file writing)
 std::size_t HashTable::size() const noexcept {
 	return size_;
 }
@@ -75,4 +78,14 @@ std::size_t HashTable::hash(int key) const noexcept {
 	constexpr double A = 0.6180339887498949;
 	double frac = std::fmod(static_cast<double>(key) * A, 1.0);
 	return static_cast<std::size_t>(m_ * frac);
+}
+
+std::string HashTable::toString() const {
+	std::string result;
+	for (const auto& chain : table_) {
+		for (const auto& rec : chain) {
+			result += rec->getLine() + '\n';
+		}
+	}
+	return result;
 }

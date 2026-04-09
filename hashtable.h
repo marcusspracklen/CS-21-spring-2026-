@@ -44,6 +44,10 @@ public:
 
 	std::size_t size()	const noexcept;
 	std::size_t capacity()	const noexcept;
+	std::size_t size()	const noexcept;
+	std::size_t capacity()	const noexcept;
+	
+	std::string toString() const;
 
 private:
 	const Record* find(int key) const;
